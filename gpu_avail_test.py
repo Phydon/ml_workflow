@@ -1,15 +1,16 @@
 import tensorflow as tf
 
 
-def gpu_check():
-    gpu = tf.config.list_physical_devices('GPU')
+def tf_version():
+    print("Version:", tf.__version__)
+    print("Eager mode: ", tf.executing_eagerly())
 
-    if gpu:
-        print("Num GPUs Available: ", len(gpu))
-        print(f"GPUs available: {gpu}")
-    else:
-        print("No GPUs available")
+
+def gpu_check():
+    print("GPU is", "available" if tf.config.list_physical_devices(
+        'GPU') else "NOT AVAILABLE")
 
 
 if __name__ == "__main__":
+    tf_version()
     gpu_check()
